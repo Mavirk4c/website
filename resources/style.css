@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-family: "Fredoka One", "Roboto Mono", sans-serif;
+    font-size: 16px;
+    --main-text-color: #ffeedf;
+    --text-shadow-color: #b8a99c;
+    --main-head-color:  #DB6F2C;
+    color: var(--main-text-color);
+    scroll-behavior: smooth;
+}
+
+section {
+    display: flex;
+    width: calc(100%);
+    height: 100%;
+    background-color: grey;
+}
+
+#landing-page{
+    background-color: unset;
+}
+
+#landing-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("./media/jake-blucker-OJX7gIU3E6U-unsplash-2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(0.13rem) contrast(1.5) brightness(1.2);
+    z-index: -1;
+}
+
+.section-wrapper {
+    width: calc(100%-10%);
+    margin-left: 5%
+}
+
+.left {
+    flex-shrink: 2;
+}
+
+.title-wrapper {
+    display: flex;
+    height: 50%;
+    align-items: center;
+}
+
+.title-wrapper h1 {
+    font-size: 8em;
+    text-shadow: 0.2rem 0.2rem 0.3rem rgb(52, 46, 46)
+}
+
+#name {
+    color: var(--main-head-color)
+}
+
+.text-wrapper {
+    width: 60%;
+    margin-top: 5%
+}
+
+.right {
+    display: flex;
+    width: 60%;
+    margin-left: unset;
+    justify-content: center;
+    align-items: center;
+}
+
+/* nav {
+    display: flex;
+    width: 40%;
+} */
+
+/* nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+} */
+
+li {
+    display: flex;
+    /* margin: 18% 0%; */
+}
+
+.button {
+    padding: 1rem 2rem;
+    margin: 1.3rem 2rem;
+    background-color: var(--main-text-color);
+    color: var(--main-head-color);
+    border-radius: 0.4rem;
+    font-size: 1.5rem;
+    text-align: left;
+    border: unset;
+    transition: 0.5s ease-in;
+    box-shadow: 0.2rem 0.2rem 0.3rem black
+}  
+
+.button:hover {
+    color: var(--main-text-color);
+    background-color: var(--main-head-color);
+    padding: 1.3rem 2.1rem;
+    margin: 1rem 1.9rem;
+    transition: 0.3s ease-in-out;
+}
+
+.button:active {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
