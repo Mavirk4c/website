@@ -1,18 +1,33 @@
-var header = document.getElementById("section-header-wrapper");
-var sticky = header.offsetTop;
-
+let header = document.getElementById("section-header-wrapper");
+let sticky = header.offsetTop;
+let aboutTitle = document.getElementById("about");
 
 
 function setHeaderSticky() {
-    console.log(sticky);
+    checkOffSetTop();
     if(window.scrollY > sticky) {
         header.classList.add("sticky");
-        console.log("STICK!")
+        return true;
     } else {
         header.classList.remove("sticky");
-        console.log("UNSTICK!");
+        return false;
     }
 };
 
-window.addEventListener("scroll", setHeaderSticky);
+function addMarginToAboutTitle() {
+    if(window.scrollY > sticky) {
+        console.log("add margin");
+        aboutTitle.classList.add("about-container")
+    } else {
+        aboutTitle.classList.remove("about-container")
+    }
+}
 
+function checkOffSetTop() {
+        sticky = header.offsetTop;
+}
+
+
+checkOffSetTop();
+window.addEventListener("scroll", setHeaderSticky);
+window.addEventListener("scroll", addMarginToAboutTitle);
