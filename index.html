@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Max Portofilio</title>
     <link rel="stylesheet" href="./resources/style.css">
+    <title>Max Portofilio</title>
 
 </head>
 <body>
@@ -13,7 +13,7 @@
     <section class="section-container" id="landing-page">
         <div class="section-wrapper left">
             <div class="title-wrapper" id="landing-title">
-                <h1>HELLO<br>I AM <span id="name">MAX</span></h1>
+                <h1>HELLO<br>I AM <span class="highlight">MAX</span></h1>
             </div>
             <div class="text-wrapper" id="landing-text">
                 <p>
@@ -35,27 +35,32 @@
     <!-- SECTION HEADER -->
     <header id="section-header-wrapper">
         <ul id="section-header">
-            <li><a class="section-button" href="#landing-page">Start</a></li>
-            <li><a class="section-button" href="#about">About</a></li>
-            <li><a class="section-button" href="#projects">Projects</a></li>
-            <li><a class="section-button" href="#contact">Contact</a></li>
+            <li><a class="section-header-button" href="#landing-page">Start</a></li>
+            <li><a class="section-header-button" href="#about">About</a></li>
+            <li><a class="section-header-button" href="#projects">Projects</a></li>
+            <li><a class="section-header-button" href="#contact">Contact</a></li>
         </ul>
     </header>
     <!-- SECTIONS -->
     <section class="section-container sections about-container" id="about">
-        <div class="title-wrapper page-title">
+        <div class="title-wrapper section-title">
             <h2>ABOUT ME</h2>
         </div>
         <div class="section-content-wrapper">
-            <div class="section-wrapper left about sections">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia delectus natus ducimus tempore minima,
+            <div class="section-wrapper left sections about">
+                <p class="about-text top">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia delectus natus ducimus tempore minima,
+                     dolores harum debitis voluptas amet deleniti eveniet dignissimos eum. Reiciendis repellendus,
+                      iste atque nisi veniam ullam.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ab at facere, reprehenderit fuga ex impedit voluptatum optio sunt suscipit minima aperiam ducimus omnis maiores, quis amet quae dolorum assumenda?
+                </p>
+                <p class="about-text bottom">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia delectus natus ducimus tempore minima,
                      dolores harum debitis voluptas amet deleniti eveniet dignissimos eum. Reiciendis repellendus,
                       iste atque nisi veniam ullam.
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ab at facere, reprehenderit fuga ex impedit voluptatum optio sunt suscipit minima aperiam ducimus omnis maiores, quis amet quae dolorum assumenda?
                 </p>
             </div>
             <div class="section-wrapper right about">
-                <div class="text-wrapper" id="about-text">
+                <div class="text-wrapper" id="facts-card">
                     <div id="max-image-wrapper">
                         <img id="max-image" src="./resources/media/Screenshot 2022-09-10 at 16.57.17.png" alt="Picture of Max ">
                     </div>
@@ -82,7 +87,7 @@
         </div>
     </section>
     <section class="section-container sections" id="projects">
-        <div class="title-wrapper page-title">
+        <div class="title-wrapper section-title">
             <h2>PROJECTS</h2>
         </div>
         <div class="section-content-wrapper">
@@ -90,15 +95,34 @@
             <div class="section-wrapper right">2</div>
         </div>
     </section>
-    <section class="section-container" id="contact">
-        <div class="title-wrapper page-title">
+    <section class="section-container sections" id="contact">
+        <div class="title-wrapper section-title">
             <h2>CONTACT</h2>
         </div>
         <div class="section-content-wrapper">
             <div class="section-wrapper left sections">
 
             </div>
-            <div class="section-wrapper right"></div>
+            <div class="section-wrapper right">
+                <div id="contact-form-wrapper">
+                    <div id="contact-form-header">
+                        <h3 class="highlight">Leave me a message</h3>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="name">Name:</label>
+                        <input name="text" class="contact-form" id="name-input" type="text" placeholder="...">
+                    </div>
+                    <div class="input-wrapper">
+                    <label for="email">e-mail:</label>
+                    <input type="text" name="email" class="contact-form" id="email-input" placeholder="...">
+                    </div>
+                    <textarea type="text" name="message" class="contact-form" id="text-input" placeholder="Your message..."></textarea>
+                    <div id="contact-button-wrapper">
+                        <button class="button" id="button-send">Send</button>
+                        <button class="button" id="button-cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <footer></footer>
     </section>
