@@ -11,10 +11,23 @@ const sendButton = document.getElementById('button-send');
 const inputBoxName = document.getElementsByClassName("input-wrapper")[0];
 const inputBoxEmail = document.getElementsByClassName("input-wrapper")[1];
 
-let errorMessages = [];
 const nameInputErrorMessageEmtpy = "Please enter a name" + "\n";
-const emailInputErrorMessageEmpty = "Please enter an e-mail" + "\n";
 const emailInputErrorMessageNotvalid = "Please enter a valid e-mail" + "\n";
+
+class Email {
+    constructor(name, email, message) {
+        this._id = crypto.randomUUID();
+        this._timeStamp = new Date();
+        this._name = name;
+        this._email = email;
+        this._message = message;
+    }
+
+    static sendEmail(obj) {
+       const json = JSON.stringify(obj);
+       console.log(json);
+    }
+}   
 
 
 function setHeaderSticky() {
@@ -43,65 +56,109 @@ function checkOffsetTop() {
 
 /**
  * 
- * @param {DOM} formElement
+ * @param {HTMLelement} formElement
  * @param {string} errorMessage 
  */
  function inputError(formElement, errorMessage) {
     formElement.classList.add("input-error")
-    errorMessages.push(errorMessage);
-}
+};
+
 /**
  * 
- * @param {DOM} formElement 
+ * @param {HTMLelement} formElement 
  */
 function removeInputErrorClass(formElement) {
-    console.log("key-event!");
     formElement.classList.remove("input-error")
-}
+};
 
-function checkName() { 
-    const name = nameInput.value;
-    if(name === "") {
-        inputError(nameInput, nameInputErrorMessageEmtpy);
-    } else {
-        console.log(name);
-    }    
-}
+/**
+ * 
+ * @param {HTMLelement} formElement 
+ */
+function setSuccesBorder(formElement) {
+    formElement.classList.add("succes");
+};
+
+function removeSuccesBorder(formElement) {
+    formElement.classList.remove("succes");
+};
 
 function checkEmail() {
-    const email = emailInput.value;
-    if(email === "") {
-        inputError(emailInput, emailInputErrorMessageEmpty);
-    } else if (!email.includes("@")) {
+    if(emailInput.validity.typeMismatch || emailInput.value === "") {
+        emailInput.setCustomValidity("Please enter a valid E-Mail");
+        emailInput.reportValidity();
+        removeSuccesBorder(emailInput);
         inputError(emailInput, emailInputErrorMessageNotvalid);
-    }
-     else {
-        console.log(email);
-    }
-}
-
-function checkContactFormInput() {
-    checkName();
-    checkEmail();
-    
-    if(errorMessages = []) {
-        return true;
     } else {
-        alert(errorMessages);
-        return false;
+        emailInput.setCustomValidity("");
+        removeInputErrorClass(emailInput);
+        setSuccesBorder(emailInput);
+
+        return true;
     }
-}
+};
 
+function checkName() {
+    if(nameInput.value === "") {
+        nameInput.setCustomValidity("Please enter your name");
+        nameInput.reportValidity();
+        removeSuccesBorder(nameInput);
+        inputError(nameInput, nameInputErrorMessageEmtpy);
+    } else {
+        nameInput.setCustomValidity("");
+        setSuccesBorder(nameInput);
+        return true;
+    }
+};
 
-// EventListener for Nav-Bar
+function removeContentFromContactForm() {
+    nameInput.value = "";
+    emailInput.value = "";
+    textMessage.value = "";
+};
+
+// **** EventListener for nav-bar ****
 window.addEventListener("resize", checkOffsetTop);
 window.addEventListener("scroll", setHeaderSticky);
 window.addEventListener("scroll", addMarginToAboutTitle);
 
-// EventListener for Contact-Form
-sendButton.addEventListener("click", checkContactFormInput);
-inputFieldName.addEventListener("keydown", function() {removeInputErrorClass(nameInput)});
-inputFieldName.addEventListener("input", removeInputErrorClass(emailInput));
-inputFieldEmail.addEventListener("input", removeInputErrorClass(nameInput));
-inputFieldEmail.addEventListener("input", removeInputErrorClass(emailInput));
 
+// **** EventListener for contact-form ****
+nameInput.addEventListener("input", () => {
+    checkName();
+});
+emailInput.addEventListener("input", () => {
+    checkEmail();
+});
+
+inputFieldName.addEventListener("input", () => {
+    removeInputErrorClass(nameInput);
+    removeInputErrorClass(emailInput);
+});
+
+inputFieldEmail.addEventListener("input", () => {
+    removeInputErrorClass(nameInput);
+    removeInputErrorClass(emailInput);
+});
+
+/*
+check for corrent inserts:
+=> true: create Email object, and convert to JSON
+=> false: error-message for user.
+*/
+sendButton.addEventListener("click", () => {
+    if(checkName() == true && checkEmail() == true) {
+        alert("Thank you for your message");
+        Email.sendEmail(new Email(
+            nameInput.value,
+            emailInput.value,
+            textMessage.value
+        ))
+        removeContentFromContactForm();
+        removeSuccesBorder(nameInput);
+        removeSuccesBorder(emailInput);
+    } else {
+        checkName();
+        checkEmail();
+    }
+});
