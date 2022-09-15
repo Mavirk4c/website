@@ -85,7 +85,7 @@ li {
     justify-content: center;
 }  
 
-.button:hover {
+ .button:hover {
     color: var(--main-text-color);
     background-color: var(--main-head-color);
     padding: 1.3rem 2.1rem;
@@ -93,10 +93,10 @@ li {
     transition: 0.2s ease;
 }
 
-.button:active {
+/* .button:active {
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
-}
+} */
 /*
 ==> Nav-bar
 */
@@ -635,6 +635,18 @@ Phone:   max-width: 767px
         margin: 0.5rem;
         padding: 0;
         align-items: center;
+    }
+    #button-send:hover, 
+    #button-cancel:hover {
+        background-color: var(--main-head-color);
+        color: var(--main-text-color);
+        padding: 0;
+    }
+    #button-send:active, 
+    #button-cancel:active{
+        background-color: var(--main-head-color);
+        color: var(--main-text-color);
+        padding: 0;
     }
     label {
         font-size: 0.9rem;
